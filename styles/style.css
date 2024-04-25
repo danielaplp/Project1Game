@@ -1,0 +1,88 @@
+body {
+    padding: 0;
+    text-align: center;
+  }
+
+  /* ver o tamanho da tela de fundo azul*/
+  
+  #game-intro {
+    padding: 20px 0px;
+    font-size: 20px;
+    color: #fff;
+    padding: 10px 40px;
+    border: 0;
+    box-shadow: 0;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /*mudar de acordo com os scores e tempo*/
+
+  #game-container {
+    display: flex;
+    width: 100vw;
+    padding: 20px 0px;
+    justify-content: center;
+    color: #ea5454;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /*verificar se funciona*/
+  
+  #game-screen {
+    display: none;
+    align-content: center;
+    padding: 100px 0px;
+    overflow: hidden;
+    position: relative;
+    background-image: url(../images/e466200512682524b0aeacf0c75488dd.jpg);
+    background-size: cover;
+    
+  }
+
+  
+  /*adequar essa parte*/
+  
+  @keyframes slide {
+    0% {
+      background-position: 0 -1000px;
+    }
+    95% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 50px;
+    }
+  }
+  
+  #game-end {
+    display: none;
+  }
+  
+  .game-intro p {
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .logo-img {
+    width: 350px;
+  }
+  
+  .arrows-img {
+    width: 150px;
+  }
+
+  /*ok*/
+  
+  body button {
+    font-size: 20px;
+    background-color: #ea5454;
+    color: #fff;
+    padding: 10px 30px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
