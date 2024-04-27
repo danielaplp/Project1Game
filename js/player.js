@@ -8,19 +8,15 @@ class Player {
         this.directionX = 0;
         this.directionY = 0;
         this.gravity = 0.05
-        //this.startAutoMove();
-
         this.element = document.createElement('img')
         this.element.src = imgSrc;
 
-        //position of the player on the sreen
         this.element.style.position = "absolute"
 
-        //size of a player
         this.element.style.width = `${this.width}px`
         this.element.style.height = `${this.height}px`
 
-        //position of a player
+
         this.element.style.left = `${this.left}px`
         this.element.style.top = `${this.top}px`
 

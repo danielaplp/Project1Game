@@ -25,6 +25,13 @@ body {
     justify-content: center;
     color: #ea5454;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgba(0, 183, 255, 0.851);
+    padding: 10px 30px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
 
   /*verificar se funciona*/
@@ -35,7 +42,7 @@ body {
     padding: 100px 0px;
     overflow: hidden;
     position: relative;
-    background-image: url(../images/e466200512682524b0aeacf0c75488dd.jpg);
+    background-image: url(../images/gamescreen.jpg);
     background-size: cover;
     
   }
@@ -85,4 +92,22 @@ body {
     margin-bottom: 20px;
     margin-top: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .point-animation {
+    animation: point;
+    animation-duration: 4s;
+  }
+
+  @keyframes point {
+    0% {
+     opacity: 0
+     
+    }
+    50% {
+     opacity: 1
+    }
+    100% {
+     opacity: 0
+    }
   }

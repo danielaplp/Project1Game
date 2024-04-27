@@ -1,10 +1,10 @@
 class Game {
-    // code to be added
     constructor(){
         this.startScreen = document.getElementById("game-intro")
         this.gameScreen = document.getElementById("game-screen")
         this.gameEndScreen = document.getElementById("game-end")
-        this.player = new Player(this.gameScreen, 200, 300, 150, 120, "../images/—Pngtree—diver wearing diving cylinder clipart_6030927.png");
+        this.scoreSpan = document.getElementById('score')
+        this.player = new Player(this.gameScreen, 200, 300, 150, 120, "/images/diver.png");
         this.height = 400;
         this.width = 800;
         this.obstacles = []
@@ -16,17 +16,14 @@ class Game {
         this.gameIntervalId = null;
         this.gameLoopFrequency = Math.floor(1000/60)
         this.gameScreen.style.position = "relative";
-        this.timerIntervalId = null; //cronometro
+        this.timerIntervalId = 0; //cronometro
     }
 
 
 start(){
-    //para mudar ou passar um valor
     this.gameScreen.style.width = `${this.width}px`
     this.gameScreen.style.height = `${this.height}px`
-    //para esconder tela
     this.startScreen.style.display = "none"
-    //para mostrar uma tela
     this.gameScreen.style.display = "block"
 
     this.startTimer(); //cronometro
@@ -38,7 +35,6 @@ start(){
 }
 
 //cronometro começo
-
 startTimer() {
     const tempoRestante = document.getElementById("tempo-restante");
     this.timerIntervalId = setInterval(() => {
@@ -48,24 +44,21 @@ startTimer() {
         if (this.time <= 0) {
             clearInterval(this.timerIntervalId);
             tempoRestante.textContent = "Tempo esgotado!";
-            this.endGame(); // Termina o jogo quando o tempo acaba
+            this.endGame(); 
         }
-    }, 1000); // 1000 milissegundos = 1 segundo
+    }, 1000); 
 }
 
 //cronometro fim
 
  gameLoop(){
     
-    console.log("gameLoop")
-    //checa se é verdade e para p jogo
+    //console.log("gameLoop")
     this.update()
     if(this.gameOver){
         clearInterval(this.gameIntervalId)
     }   
  }
-
- //atualizar o uptade
 
  update(){
     this.player.move()
@@ -73,111 +66,101 @@ startTimer() {
     for(let i=0; i < this.obstacles.length; i++){
         const obstacle = this.obstacles[i]
 
-        //mobing the obstacle
-        obstacle.move()
+        obstacle.move();
 
-        //check the collision
         if(this.player.didCollide(obstacle)){
-            //remove the html element
             obstacle.element.remove()
-            
+
+            //adicionar imagem
+        this.pointAnimation(obstacle)
+
            /*  obstacle.element.src
             const newImage = document.createElement("img")
             newImage.src = obstacle.element.src
-            this.leftScreen.appendChild(newImage)
- */
-            //remove from the array
-            this.obstacles.splice(i,1)
-            this.lives++
-            //para atualizar a quantidade de obstaculos no array
-            i--
-        } else if(obstacle.top > this.height){
+            this.leftScreen.appendChild(newImage)*/
+            
+            this.obstacles.splice(i,1);
+            i--;
+            //this.lives++
+            this.score++;
+            this.updateScoreDisplay();
+            //this.addSymbol();
+            } else if(obstacle.top > this.height){
             
             obstacle.element.remove()
             this.obstacles.splice(i,1)
-
-            this.score ++
-            //para atualizar a quantidade de obstaculos no array
             i--
-
+            this.lives--;
         }
-
 
     }
 
-    //console.log(this.lives)
-    //console.log(this.score)
-
+    if(this.lives <=0){
+        this.endGame();
+        return;
+    }
 
     if(Math.random() > 0.98 && this.obstacles.length < 1){
         this.obstacles.push(new Obstacle(this.gameScreen))
     }
 
+//começo do enemy
 
-//aqui começa o enemy
 
-
+//console.log(this.enemies.length)
 for(let i=0; i < this.enemies.length; i++){
     const enemy = this.enemies[i]
-
 
     enemy.move()
 
     
     if(this.player.didCollide(enemy)){
-        
+        console.log('collided')
         enemy.element.remove()
-        
-
+    
         this.enemies.splice(i,1)
-        this.lives--
-        
-        i--
-    } else if(enemy.top > this.height){
-        
-       enemy.element.remove()
-        this.enemies.splice(i,1)
-
-        this.score ++
-        
-        i--
-
-    }
+        i--;
+        this.lives--;
 
 
+    } 
 }
-
-if(this.lives === 0){
-    this.endGame()
-}
-
 
 
 if(Math.random() > 0.98 && this.enemies.length < 1){
-    this.enemies.push(new Enemy(this.gameScreen))
+    this.enemies.push(new Enemy(this.gameScreen, this.player))
 }   
 
  }
-
+ 
  endGame(){
-    //remove elements from the dom
-
     this.player.element.remove()
     this.obstacles.forEach(obstacle => obstacle.element.remove())
     this.obstacles = []
-
-    //stop the engine
+    this.enemies.forEach(enemy => enemy.element.remove())
+    this.enemies = []
     this.gameOver = true
-
-    //para esconder a tela do jogo quando acaba
-
     this.gameScreen.style.display = "none"
-
-    //para mostrar a tela de game over
-
     this.gameEndScreen.style.display = "block"
+ }
 
-  
+ updateScoreDisplay(){
+    this.scoreSpan.innerText = this.score
+ }
+
+ pointAnimation(obstacle){
+    const recycleImage = document.createElement('img')
+    recycleImage.src = '../images/recycling symbol.jpg'
+    recycleImage.style.position = 'absolute'
+    recycleImage.style.width = '50px'
+    recycleImage.style.top = `${obstacle.top +20}px`
+    recycleImage.style.left = `${obstacle.left +20}px`
+
+    recycleImage.classList.add('point-animation')
+    this.gameScreen.appendChild(recycleImage)
+    setTimeout(()=> {
+        recycleImage.remove()
+    }, 4000)
  }
 
 }
