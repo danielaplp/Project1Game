@@ -4,34 +4,46 @@ body {
   }
 
   /* ver o tamanho da tela de fundo azul*/
+
+  .title {
+    color: #54b6ea;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+
+  
   
   #game-intro {
-    padding: 20px 0px;
+    padding: 30px 10px;
     font-size: 20px;
-    color: #fff;
-    padding: 10px 40px;
+    color: #54b6ea;
+    padding: 30px 40px;
     border: 0;
     box-shadow: 0;
     margin-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
+
+
   /*mudar de acordo com os scores e tempo*/
 
   #game-container {
-    display: flex;
+ 
+    display: none;
     width: 100vw;
-    padding: 20px 0px;
-    justify-content: center;
-    color: #ea5454;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgba(0, 183, 255, 0.851);
+    padding: 30px 10px;
+    justify-content:center;
+    color: #54b6ea;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 10px 30px;
     border: 0;
     box-shadow: 0;
     border-radius: 5px;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   /*verificar se funciona*/
@@ -42,8 +54,9 @@ body {
     padding: 100px 0px;
     overflow: hidden;
     position: relative;
-    background-image: url(../images/gamescreen.jpg);
+    background-image: url(../images/fundomar2.jpg);
     background-size: cover;
+
     
   }
 
@@ -64,6 +77,9 @@ body {
   
   #game-end {
     display: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #54b6ea;
+    
   }
   
   .game-intro p {
@@ -83,7 +99,7 @@ body {
   
   body button {
     font-size: 20px;
-    background-color: #ea5454;
+    background-color: #54b6ea;
     color: #fff;
     padding: 10px 30px;
     border: 0;
@@ -91,12 +107,12 @@ body {
     border-radius: 5px;
     margin-bottom: 20px;
     margin-top: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   .point-animation {
     animation: point;
-    animation-duration: 4s;
+    animation-duration: 1s;
   }
 
   @keyframes point {
@@ -111,3 +127,5 @@ body {
      opacity: 0
     }
   }
+
+ 

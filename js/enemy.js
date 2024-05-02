@@ -5,10 +5,10 @@ class Enemy {
 
       this.left = Math.floor(Math.random() * 500 + 70);
       this.top = this.player.top + 300
-      this.width = 80;
-      this.height = 100;
+      this.width = 150;
+      this.height = 200;
       this.element = document.createElement("img")
-      this.element.src = "../images/Cartoon Shark.png"
+      this.element.src = "../images/shark3.gif";
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;

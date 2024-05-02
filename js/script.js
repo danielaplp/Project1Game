@@ -9,12 +9,18 @@ window.onload = function(){
         startGame();
     });
 
+    
+
+    
     function startGame() {
         console.log("start game");
         game = new Game()
 
         game.start()   
      }
+
+  
+
 
      function handleKeyDown(event){
         const key = event.key;
@@ -53,8 +59,16 @@ window.onload = function(){
         game.player.directionY = 0;
       }) 
 
-
-
+      restartButton.addEventListener("click", function () {
+    
+        restartGame();
+      });
+    
+     
+      function restartGame() {
+        location.reload();
+      }
+    
 
 
 }

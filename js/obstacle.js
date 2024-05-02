@@ -3,10 +3,10 @@ class Obstacle {
           this.gameScreen = gameScreen;
           this.left = Math.floor(Math.random() * 500 + 70);
           this.top = 0;
-          this.width = 80;
-          this.height = 100;
+          this.width = 30;
+          this.height = 60;
           this.element = document.createElement("img");
-          this.imagesArray = ["../images/kisspng-plastic-bottle-5d4c74b454e890.2820321615652917003478.jpg", "../images/pngtree-soda-drink-cans-clipart-png-image_5676398.jpg"] 
+          this.imagesArray = ["../images/latinha.png", "../images/sacoplastico1.png", "../images/garrafa.png"] 
       
           this.element.src = this.imagesArray[Math.floor(Math.random() * this.imagesArray.length)]
           this.element.style.position = "absolute";
